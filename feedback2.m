@@ -1,0 +1,53 @@
+clear;
+clc;
+wn=1;
+kc=0.7;
+%p=[0.1,1,10,100]
+p=0.1;
+num=[0 0 0 wn*wn*p];
+den=[1 2*kc*wn+p wn*wn+2*kc*wn*p wn*wn*p];
+sys=tf(num,den);
+t=0:0.01:60;
+y=step(sys,t);
+subplot(2,2,1);
+plot(t,y);
+set(gca,'ylim',[0 1.5]);
+msg_title = sprintf('Step Response for p=%3.2f',p);
+title(msg_title);
+grid on;
+
+p=1;
+num=[0 0 0 wn*wn*p];
+den=[1 2*kc*wn+p wn*wn+2*kc*wn*p wn*wn*p];
+sys=tf(num,den);
+t=0:0.01:60;
+y=step(sys,t);
+subplot(2,2,2);
+plot(t,y);
+msg_title = sprintf('Step Response for p=%3.2f',p);
+title(msg_title);
+grid on;
+
+p=10;
+num=[0 0 0 wn*wn*p];
+den=[1 2*kc*wn+p wn*wn+2*kc*wn*p wn*wn*p];
+sys=tf(num,den);
+t=0:0.01:60;
+y=step(sys,t);
+subplot(2,2,3);
+plot(t,y);
+msg_title = sprintf('Step Response for p=%3.2f',p);
+title(msg_title);
+grid on;
+
+p=100;
+num=[0 0 0 wn*wn*p];
+den=[1 2*kc*wn+p wn*wn+2*kc*wn*p wn*wn*p];
+sys=tf(num,den);
+t=0:0.01:60;
+y=step(sys,t);
+subplot(2,2,4);
+plot(t,y);
+msg_title = sprintf('Step Response for p=%3.2f',p);
+title(msg_title);
+grid on;
